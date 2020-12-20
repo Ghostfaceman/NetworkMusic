@@ -9,10 +9,14 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.networkmusic.event.PlayEvent;
+import com.example.networkmusic.model.Song;
 import com.example.networkmusic.musicApiUtil.UrlParseJsonUtil;
+import com.example.networkmusic.player.MusicPlayer;
 import com.kelin.banner.BannerEntry;
 import com.kelin.banner.transformer.GalleryTransformer;
 import com.kelin.banner.view.BannerView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,6 +28,7 @@ public class HomePageActivity extends AppCompatActivity {
     private List<MusicBean> musicBeans = new ArrayList<>();
     //创建一个MediaPlayer对象
     MediaPlayer mp3 = new MediaPlayer();
+    private PlayEvent playEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,27 +50,26 @@ public class HomePageActivity extends AppCompatActivity {
                 String url = (String) entry.getValue();
 
                 //播放
-                try {
-                    Toast.makeText(HomePageActivity.this, "播放", Toast.LENGTH_SHORT).show();
-                    mp3.reset();
-                    mp3.setDataSource(url);
-                    mp3.prepareAsync();
-                    mp3.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                        @Override
-                        public void onPrepared(MediaPlayer mp) {
-                            mp3.start();
-                        }
-                    });
-//                    playEvent.setAction(PlayEvent.Action.PLAY);
-//                    playEvent.setQueue(queue);
-//                    EventBus.getDefault().post(playEvent);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                Toast.makeText(HomePageActivity.this, "播放", Toast.LENGTH_SHORT).show();
+                playEvent = new PlayEvent();
+                //拿到播放器播放音乐
+                MusicPlayer.getPlayer().play(getSong(url));
+                //播放一次后加入到播放队列
+                List<Song> queue = new ArrayList<>();
+                queue.add(getSong(url));
+                playEvent.setAction(PlayEvent.Action.PLAY);
+                playEvent.setQueue(queue);
+                EventBus.getDefault().post(playEvent);
 
             }
         });
 
+    }
+
+    private Song getSong(String url) {
+        Song song = new Song();
+        song.setPath(url);
+        return song;
     }
 
 

@@ -6,6 +6,8 @@ import android.os.IBinder;
 
 import com.example.networkmusic.event.PlayEvent;
 
+import org.greenrobot.eventbus.EventBus;
+
 public class PlayerService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
@@ -15,7 +17,7 @@ public class PlayerService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-//        EventBus.getDefault().register(this);
+        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -24,7 +26,7 @@ public class PlayerService extends Service {
     }
 
     //接收EventBus post过来的PlayEvent
-//    @Subscribe
+    @Subscribe
     public void onEvent(PlayEvent playEvent) {
         switch (playEvent.getAction()) {
             case PLAY:
