@@ -57,10 +57,12 @@ public class HomePageActivity extends AppCompatActivity {
                 //播放一次后加入到播放队列
                 List<Song> queue = new ArrayList<>();
                 queue.add(getSong(url));
+                //播放事件设置PLAY
                 playEvent.setAction(PlayEvent.Action.PLAY);
+                //设置当前播放队列
                 playEvent.setQueue(queue);
+                //线程安全
                 EventBus.getDefault().post(playEvent);
-
             }
         });
 
