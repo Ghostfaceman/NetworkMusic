@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public class PlayEvent {
-    //用户行为获取
+    //用户歌单行为获取
     public enum Action {
         PLAY, STOP, RESUME, NEXT, PREVIOES, SEEK
     }
@@ -32,6 +32,10 @@ public class PlayEvent {
         mAction = action;
     }
 
+    /**
+     * 获取音乐列表
+     * @return
+     */
     public List<Song> getQueue() {
         return mQueue;
     }
@@ -40,6 +44,10 @@ public class PlayEvent {
         mQueue = queue;
     }
 
+    /**
+     * 当前音乐进度
+     * @return
+     */
     public int getSeekTo() {
         return seekTo;
     }

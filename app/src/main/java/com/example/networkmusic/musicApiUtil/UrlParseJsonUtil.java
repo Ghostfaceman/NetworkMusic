@@ -1,6 +1,6 @@
 package com.example.networkmusic.musicApiUtil;
 
-import com.example.networkmusic.MusicBean;
+import com.example.networkmusic.model.MusicBean;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -66,6 +66,11 @@ public class UrlParseJsonUtil {
         return null;
     }
 
+    /**
+     * 解析随机音乐对象
+     * @param jsonString
+     * @return
+     */
     public static MusicBean paseJsonObject(String jsonString){
         MusicBean musicBean = null;
         try {

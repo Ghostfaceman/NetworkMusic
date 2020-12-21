@@ -46,7 +46,7 @@ public class ManagedMediaPlayer extends MediaPlayer implements MediaPlayer.OnCom
     }
 
     /**
-     * 播放音乐
+     * 启动
      */
     @Override
     public void start() {
@@ -76,7 +76,7 @@ public class ManagedMediaPlayer extends MediaPlayer implements MediaPlayer.OnCom
     }
 
     /**
-     * 停止播放音乐并刷新状态
+     * 停止播放并刷新状态
      * @throws IllegalStateException
      */
     @Override
@@ -86,7 +86,7 @@ public class ManagedMediaPlayer extends MediaPlayer implements MediaPlayer.OnCom
     }
 
     /**
-     * 暂停播放音乐并刷新状态
+     * 暂停播放并刷新状态
      * @throws IllegalStateException
      */
     @Override
@@ -96,7 +96,7 @@ public class ManagedMediaPlayer extends MediaPlayer implements MediaPlayer.OnCom
     }
 
     /**
-     * 获取播放器的状态
+     * 获取媒体播放器的状态
      * @return
      */
     public Status getState() {
@@ -104,11 +104,13 @@ public class ManagedMediaPlayer extends MediaPlayer implements MediaPlayer.OnCom
     }
 
     /**
-     * 设置播放器为完成状态
+     * 设置媒体播放器为完成状态
      * @return
      */
     public boolean isComplete() {
         return mState == Status.COMPLETED;
     }
+
+
 
 }

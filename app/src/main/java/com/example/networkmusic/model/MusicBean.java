@@ -1,4 +1,4 @@
-package com.example.networkmusic;
+package com.example.networkmusic.model;
 
 public class MusicBean {
     private String name;//歌曲名
@@ -13,6 +13,10 @@ public class MusicBean {
         this.artistsname = artistsname;
     }
 
+    /**
+     * 获取歌曲名
+     * @return
+     */
     public String getName() {
         return name;
     }
@@ -29,6 +33,10 @@ public class MusicBean {
         this.url = url;
     }
 
+    /**
+     * 获取歌曲图片地址
+     * @return
+     */
     public String getPicurl() {
         return picurl;
     }
@@ -37,6 +45,10 @@ public class MusicBean {
         this.picurl = picurl;
     }
 
+    /**
+     * 获取歌手名
+     * @return
+     */
     public String getArtistsname() {
         return artistsname;
     }

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.example.networkmusic.event.PlayEvent;
+import com.example.networkmusic.model.MusicBean;
 import com.example.networkmusic.model.Song;
 import com.example.networkmusic.musicApiUtil.UrlParseJsonUtil;
 import com.example.networkmusic.player.MusicPlayer;
@@ -18,7 +19,6 @@ import com.kelin.banner.view.BannerView;
 
 import org.greenrobot.eventbus.EventBus;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
